@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
 
 // extracts the context property from props
 export default ({ context }) => {
-  // calls the signOut action
-  context.actions.signOut();
+  // component calls signOut and updates state after render
+  useEffect(() =>  context.actions.signOut());
 
   return (
     <Redirect to="/" />
