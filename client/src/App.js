@@ -6,7 +6,7 @@ import {
 } from 'react-router-dom';
 
 import Header from './components/Header';
-import Public from './components/Public';
+import Courses from './components/Courses';
 import NotFound from './components/NotFound';
 import UserSignUp from './components/UserSignUp';
 import UserSignIn from './components/UserSignIn';
@@ -27,7 +27,7 @@ export default () => (
     <HeaderWithContext />
 
     <Switch>
-      <Route exact path="/" component={Public} />
+      <Route exact path="/" component={Courses} />
       <PrivateRoute path="/authenticated" component={AuthWithContext} />
       <PrivateRoute path="/settings" component={AuthWithContext} />
       <Route path="/signin" component={UserSignInWithContext} />
