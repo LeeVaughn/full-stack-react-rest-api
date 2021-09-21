@@ -2,6 +2,23 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
 export default class Courses extends Component {
+  state = {
+    courses: [],
+  }
+
+  componentDidMount() {
+    const { context } = this.props;
+
+    context.data
+      .getCourses()
+      .then(data => {
+        if (data) {
+          this.setState({ courses: data });
+          console.log(this.state.courses)
+        }
+      })
+  }
+
   render() {
     return (
       <main>

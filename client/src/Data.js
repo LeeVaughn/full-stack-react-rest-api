@@ -28,6 +28,7 @@ export default class Data {
 
   async getUser(username, password) {
     const response = await this.api("/users", "GET", null, true, { username, password });
+
     if (response.status === 200) {
       return response.json().then(data => data);
     }
@@ -41,6 +42,7 @@ export default class Data {
   
   async createUser(user) {
     const response = await this.api("/users", "POST", user);
+
     if (response.status === 201) {
       return [];
     }
@@ -50,6 +52,19 @@ export default class Data {
       });
     }
     else {
+      throw new Error();
+    }
+  }
+
+  async getCourses() {
+    const response = await this.api("/courses", "GET", null);
+
+    if (response.status === 200) {
+      return response.json().then(data => data);
+    } else if (response.status === 500) {
+      //TODO Need to create Error component
+      return this.props.history.push("/error");
+    } else {
       throw new Error();
     }
   }
