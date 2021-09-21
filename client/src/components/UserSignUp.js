@@ -70,7 +70,7 @@ export default class UserSignUp extends Component {
               </React.Fragment>
             )} />
           <p>
-            Already have a user account? <Link to="/signin">Click here</Link> to sign in!
+            Already have a user account? Click here to <Link to="/signin">sign in</Link>!
           </p>
         </div>
       </main>
