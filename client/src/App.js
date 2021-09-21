@@ -11,13 +11,11 @@ import NotFound from './components/NotFound';
 import UserSignUp from './components/UserSignUp';
 import UserSignIn from './components/UserSignIn';
 import UserSignOut from './components/UserSignOut';
-import Authenticated from './components/Authenticated';
 
 import withContext from "./Context";
 import PrivateRoute from "./PrivateRoute";
 
 const HeaderWithContext = withContext(Header);
-const AuthWithContext = withContext(Authenticated);
 const UserSignUpWithContext = withContext(UserSignUp);
 const UserSignInWithContext = withContext(UserSignIn);
 const UserSignOutWithContext = withContext(UserSignOut);
@@ -28,7 +26,6 @@ export default () => (
 
     <Switch>
       <Route exact path="/" component={Courses} />
-      <PrivateRoute path="/authenticated" component={AuthWithContext} />
       <PrivateRoute path="/settings" component={AuthWithContext} />
       <Route path="/signin" component={UserSignInWithContext} />
       <Route path="/signup" component={UserSignUpWithContext} />
