@@ -17,9 +17,9 @@ export default class UserSignIn extends Component {
     } = this.state;
 
     return (
-      <div className="bounds">
-        <div className="grid-33 centered signin">
-          <h1>Sign In</h1>
+      <main>
+        <div class="form--centered">
+          <h2>Sign In</h2>
           <Form 
             cancel={this.cancel}
             errors={errors}
@@ -27,27 +27,33 @@ export default class UserSignIn extends Component {
             submitButtonText="Sign In"
             elements={() => (
               <React.Fragment>
-                <input 
+                <label>
+                  Email Address
+                  <input 
                   id="username" 
                   name="username" 
                   type="text"
                   value={username} 
                   onChange={this.change} 
                   placeholder="User Name" />
-                <input 
-                  id="password" 
-                  name="password"
-                  type="password"
-                  value={password} 
-                  onChange={this.change} 
-                  placeholder="Password" />                
+                </label>
+                <label>
+                  Password
+                  <input 
+                    id="password" 
+                    name="password"
+                    type="password"
+                    value={password} 
+                    onChange={this.change} 
+                    placeholder="Password" />
+                </label>               
               </React.Fragment>
             )} />
           <p>
-            Don't have a user account? <Link to="/signup">Click here</Link> to sign up!
+            Don't have a user account? Click here to <Link to="/signup">sign up</Link>!
           </p>
         </div>
-      </div>
+      </main>
     );
   }
 
