@@ -26,7 +26,6 @@ export default () => (
 
     <Switch>
       <Route exact path="/" component={Courses} />
-      <PrivateRoute path="/settings" component={AuthWithContext} />
       <Route path="/signin" component={UserSignInWithContext} />
       <Route path="/signup" component={UserSignUpWithContext} />
       <Route path="/signout" component={UserSignOutWithContext} />

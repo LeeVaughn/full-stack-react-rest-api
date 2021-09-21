@@ -1,6 +1,6 @@
-import React from 'react';
-import { Route, Redirect } from 'react-router-dom';
-import { Consumer } from './Context';
+import React from "react";
+import { Route, Redirect } from "react-router-dom";
+import { Consumer } from "./Context";
 
 // destructures and renames the component prop and collects any props that get passed into a ...rest variable
 export default ({ component: Component, ...rest }) => {
