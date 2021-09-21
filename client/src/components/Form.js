@@ -36,7 +36,7 @@ function ErrorsDisplay({ errors }) {
 
   if (errors.length) {
     errorsDisplay = (
-      <div class="validation--errors">
+      <div className="validation--errors">
         <h3>Validation errors</h3>
         <div className="validation-errors">
           <ul>

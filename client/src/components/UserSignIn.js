@@ -18,7 +18,7 @@ export default class UserSignIn extends Component {
 
     return (
       <main>
-        <div class="form--centered">
+        <div className="form--centered">
           <h2>Sign In</h2>
           <Form 
             cancel={this.cancel}
@@ -71,7 +71,7 @@ export default class UserSignIn extends Component {
   submit = () => {
     // uses destructuring to extract the context prop
     const { context } = this.props;
-    const { from } = this.props.location.state || { from: { pathname: "/authenticated" } };
+    const { from } = this.props.location.state || { from: { pathname: "/" } };
     // unpacks properties from the state object
     const { username, password } = this.state;
 
