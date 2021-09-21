@@ -21,8 +21,8 @@ export default class UserSignUp extends Component {
     } = this.state;
 
     return (
-      <div className="bounds">
-        <div className="grid-33 centered signin form--centered">
+      <main>
+        <div className="form--centered">
           <h2>Sign Up</h2>
           <Form 
             cancel={this.cancel}
@@ -73,7 +73,7 @@ export default class UserSignUp extends Component {
             Already have a user account? <Link to="/signin">Click here</Link> to sign in!
           </p>
         </div>
-      </div>
+      </main>
     );
   }
 
@@ -113,7 +113,7 @@ export default class UserSignUp extends Component {
         } else {
           context.actions.signIn(emailAddress, password)
             .then( () => {
-              this.props.history.push("/authenticated");
+              this.props.history.push("/");
             })
         }
       })
