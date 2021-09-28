@@ -2,7 +2,30 @@ import React, { Component} from "react";
 import { Link } from "react-router-dom";
 
 export default class CourseDetail extends Component {
+  state = {
+    course: []
+  }
+
+  componentDidMount() {
+    const { context } = this.props;
+    const id = this.props.match.params.id;
+    console.log(id)
+
+    context.data.getCourse(id)
+      .then(data => {
+        this.setState({ course: data });
+      })
+      .catch(err => {
+        console.log(err);
+        this.props.history.push(from);
+      })
+  }
+
   render() {
+    const { course } = this.state;
+    console.log(course)
+    console.log(course.User)
+
     return (
       <React.Fragment>
         <div className="actions--bar">
