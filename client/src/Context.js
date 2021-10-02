@@ -42,6 +42,8 @@ export class Provider extends Component {
 
     // update authenticatedUser state if user is not null, otherwise it remains null
     if (user !== null) {
+      user.password = password;
+      
       this.setState( () => {
         return {
           authenticatedUser: user,
