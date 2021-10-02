@@ -12,7 +12,6 @@ export default class CourseDetail extends Component {
   componentDidMount() {
     const { context } = this.props;
     const id = this.props.match.params.id;
-    console.log(id)
 
     context.data.getCourse(id)
       .then(data => {
@@ -33,7 +32,7 @@ export default class CourseDetail extends Component {
         <div className="actions--bar">
           <div className="wrap">
             <a className="button" href={`/courses/${course.id}/update`}>Update Course</a>
-            <a className="button" href="#">Delete Course</a>
+            <a className="button" href="#" onClick={this.delete}>Delete Course</a>
             <a className="button button-secondary" href="/">Return to List</a>
           </div>
         </div>
@@ -62,5 +61,18 @@ export default class CourseDetail extends Component {
         </div>
       </React.Fragment>
     )
+  }
+
+  delete = () => {
+    const { context } = this.props;
+    console.log(context.authenticatedUser)
+    console.log(context.authenticatedUser.emailAddress)
+    console.log(context.authenticatedUser.password)
+    const user = context.authenticatedUser;
+
+    context.data.deleteCourse(this.state.course.id, user.emailAddress, user.password)
+      .then( data => {
+        this.props.history.push("/");
+      })
   }
 }
