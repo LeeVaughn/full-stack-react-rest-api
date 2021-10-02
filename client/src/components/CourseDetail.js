@@ -32,9 +32,9 @@ export default class CourseDetail extends Component {
       <React.Fragment>
         <div className="actions--bar">
           <div className="wrap">
-            <a className="button" href="update-course.html">Update Course</a>
+            <a className="button" href={`/courses/${course.id}/update`}>Update Course</a>
             <a className="button" href="#">Delete Course</a>
-            <a className="button button-secondary" href="index.html">Return to List</a>
+            <a className="button button-secondary" href="/">Return to List</a>
           </div>
         </div>
               
