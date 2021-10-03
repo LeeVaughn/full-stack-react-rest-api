@@ -74,6 +74,10 @@ export default class Data {
 
     if (response.status === 200) {
       return response.json().then(data => data);
+    } else if (response.status === 404) {
+      console.log("404")
+      //TODO Need to create NotFound component
+      return console.log(response.status);
     } else if (response.status === 500) {
       //TODO Need to create Error component
       return this.props.history.push("/error");
