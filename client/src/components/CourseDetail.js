@@ -15,25 +15,38 @@ export default class CourseDetail extends Component {
 
     context.data.getCourse(id)
       .then(data => {
-        this.setState({ course: data });
-        this.setState({ user: data.User });
+        if (data) {
+          this.setState({ course: data });
+          this.setState({ user: data.User });
+        } else {
+          this.props.history.push("/notfound");
+        }
       })
       .catch(err => {
         console.log(err);
-        this.props.history.push(from);
+        this.props.history.push("/error");
       })
   }
 
   render() {
     const { course, user } = this.state;
+    const { context } = this.props;
+    const authUser = context.authenticatedUser
+    console.log(user)
+    console.log("id", user.id)
 
     return (
       <React.Fragment>
         <div className="actions--bar">
           <div className="wrap">
-            <a className="button" href={`/courses/${course.id}/update`}>Update Course</a>
-            <a className="button" href="#" onClick={this.delete}>Delete Course</a>
-            <a className="button button-secondary" href="/">Return to List</a>
+            {/* https://reactjs.org/docs/conditional-rendering.html#inline-if-with-logical--operator */}
+            {authUser && authUser.id === user.id &&
+              <React.Fragment>
+                <Link className="button" to={`/courses/${course.id}/update`}>Update Course</Link>
+                <Link className="button" to="#" onClick={this.delete}>Delete Course</Link>
+              </React.Fragment>
+            }
+            <Link className="button button-secondary" to="/">Return to List</Link>
           </div>
         </div>
               
@@ -65,9 +78,6 @@ export default class CourseDetail extends Component {
 
   delete = () => {
     const { context } = this.props;
-    console.log(context.authenticatedUser)
-    console.log(context.authenticatedUser.emailAddress)
-    console.log(context.authenticatedUser.password)
     const user = context.authenticatedUser;
 
     context.data.deleteCourse(this.state.course.id, user.emailAddress, user.password)
