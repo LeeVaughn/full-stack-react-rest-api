@@ -31,16 +31,14 @@ export default class CourseDetail extends Component {
   render() {
     const { course, user } = this.state;
     const { context } = this.props;
-    const authUser = context.authenticatedUser
-    console.log(user)
-    console.log("id", user.id)
+    const authUser = context.authenticatedUser;
 
     return (
       <React.Fragment>
         <div className="actions--bar">
           <div className="wrap">
             {/* https://reactjs.org/docs/conditional-rendering.html#inline-if-with-logical--operator */}
-            {authUser && authUser.id === user.id &&
+            {authUser && +authUser.id === user.id &&
               <React.Fragment>
                 <Link className="button" to={`/courses/${course.id}/update`}>Update Course</Link>
                 <Link className="button" to="#" onClick={this.delete}>Delete Course</Link>
