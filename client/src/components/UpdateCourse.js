@@ -19,14 +19,18 @@ export default class Courses extends Component {
     context.data.getCourse(id)
       .then(data => {
         if (data) {
-          this.setState({
-            id: data.id,
-            title: data.title,
-            description: data.description,
-            estimatedTime: data.estimatedTime,
-            materialsNeeded: data.materialsNeeded
-          })
-          this.setState({ user: data.User });
+          if (data.userId === +context.authenticatedUser.id) {
+            this.setState({
+              id: data.id,
+              title: data.title,
+              description: data.description,
+              estimatedTime: data.estimatedTime,
+              materialsNeeded: data.materialsNeeded
+            })
+            this.setState({ user: data.User });
+          } else {
+            this.props.history.push("/forbidden");
+          }
         } else {
           this.props.history.push("/notfound");
         }
