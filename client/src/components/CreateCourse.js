@@ -11,31 +11,6 @@ export default class Courses extends Component {
     user: []
   }
 
-  // componentDidMount() {
-  //   const { context } = this.props;
-  //   const id = this.props.match.params.id;
-    
-  //   context.data.getCourse(id)
-  //     .then(data => {
-  //       if (data) {
-  //         this.setState({
-  //           id: data.id,
-  //           title: data.title,
-  //           description: data.description,
-  //           estimatedTime: data.estimatedTime,
-  //           materialsNeeded: data.materialsNeeded
-  //         })
-  //         this.setState({ user: data.User });
-  //       } else {
-  //         this.props.history.push("/notfound");
-  //       }
-  //     })
-  //     .catch(err => {
-  //       console.log(err);
-  //       this.props.history.push("/error");
-  //     })
-  // }
-
   render() {
     const { context } = this.props;
     const {
